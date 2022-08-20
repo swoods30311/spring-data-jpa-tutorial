@@ -32,6 +32,13 @@ class CourseMaterialRepositoryTest {
 
         repository.save(courseMaterial);
     }
-    
+
+    @Test
+    public void printAllCourseMaterials() {
+        List<CourseMaterial> courseMaterials =
+                repository.findAll();
+
+        System.out.println("courseMaterials = " + courseMaterials);
+    }
 
 }
