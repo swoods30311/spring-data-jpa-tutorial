@@ -44,5 +44,25 @@ public class Course {
     )
     private Teacher teacher;
 
+    @ManyToMany(
+            cascade = CascadeType.ALL
+    )
+    @JoinTable(
+            name = "studen_course_map",
+            joinColumns = @JoinColumn(
+                    name = "course_id",
+                    referencedColumnName = "courseId"
+            ),
+            inverseJoinColumns = @JoinColumn(
+                    name = "student_id",
+                    referencedColumnName = "studentId"
+            )
+    )
+    private List<Student> students;
+
+    public void addStudents(Student student){
+        if(students == null) students = new ArrayList<>();
+        students.add(student);
+    }
 
 }
